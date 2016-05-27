@@ -6,6 +6,12 @@ angular.module 'railsAngularJs'
         url: '/'
         templateUrl: 'app/main/main.html'
         controller: 'MainController'
-        controllerAs: 'main'
+        controllerAs: 'vm'
+        resolve: {
+        	tasks: (Task) -> 
+        		Task.query().then (tasks) -> 
+        			console.log tasks
+        			tasks
+        }
 
     $urlRouterProvider.otherwise '/'
